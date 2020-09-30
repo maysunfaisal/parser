@@ -9,6 +9,7 @@ require (
 	github.com/gobwas/glob v0.2.3
 	github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7
 	github.com/kylelemons/godebug v0.0.0-20170820004349-d65d576e9348
+	github.com/maysunfaisal/api v0.0.0-20200930214435-b02caae173b4
 	github.com/operator-framework/operator-sdk v0.17.0 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/afero v1.3.2

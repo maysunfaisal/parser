@@ -2,6 +2,7 @@ package data
 
 import (
 	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
+	// v2 "github.com/devfile/parser/pkg/devfile/parser/data/v2"
 )
 
 // DevfileData is an interface that defines functions for Devfile data operations
@@ -44,4 +45,8 @@ type DevfileData interface {
 	AddVolume(volume v1.Component, path string) error
 	DeleteVolume(name string) error
 	GetVolumeMountPath(name string) (string, error)
+
+	GetCustomType() string
+
+	// v2.DevfileDataV2
 }

@@ -1,6 +1,7 @@
 package common
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/devfile/api/pkg/attributes"
@@ -19,7 +20,7 @@ func FilterDevfileObject(attributes attributes.Attributes, options DevfileOption
 	for key, value := range options.Filter {
 		currentFilterIn := false
 		attrValue := attributes.Get(key, &err)
-		if err != nil {
+		if err != nil && err.Error() != fmt.Sprintf("Attribute with key '"+key+"' does not exist") {
 			return false, err
 		} else if reflect.DeepEqual(attrValue, value) {
 			currentFilterIn = true

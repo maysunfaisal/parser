@@ -6,7 +6,7 @@ import (
 
 	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
 	"github.com/devfile/api/pkg/attributes"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 )
 
 func TestDevfile200_GetCommands(t *testing.T) {

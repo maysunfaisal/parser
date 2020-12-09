@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
-	"github.com/devfile/library/pkg/devfile/parser"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
-	"github.com/devfile/library/pkg/util"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
+	"github.com/maysunfaisal/parser/pkg/util"
 	buildv1 "github.com/openshift/api/build/v1"
 	routev1 "github.com/openshift/api/route/v1"
 	appsv1 "k8s.io/api/apps/v1"

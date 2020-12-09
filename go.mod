@@ -1,4 +1,4 @@
-module github.com/devfile/library
+module github.com/maysunfaisal/parser
 
 go 1.13
 

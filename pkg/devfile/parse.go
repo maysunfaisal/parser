@@ -1,7 +1,7 @@
 package devfile
 
 import (
-	"github.com/devfile/library/pkg/devfile/parser"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
 )
 
 // ParseFromURLAndValidate func parses the devfile data from the url

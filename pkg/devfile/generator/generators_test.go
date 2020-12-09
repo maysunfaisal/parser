@@ -6,9 +6,9 @@ import (
 
 	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
 	"github.com/devfile/api/pkg/attributes"
-	"github.com/devfile/library/pkg/devfile/parser"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
-	"github.com/devfile/library/pkg/testingutil"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
+	"github.com/maysunfaisal/parser/pkg/testingutil"
 
 	corev1 "k8s.io/api/core/v1"
 )

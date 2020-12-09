@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
-	"github.com/devfile/library/pkg/testingutil"
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/maysunfaisal/parser/pkg/testingutil"
 )
 
 func TestDevfile200_AddVolume(t *testing.T) {

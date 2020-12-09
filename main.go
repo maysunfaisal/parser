@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"reflect"
 
-	devfilepkg "github.com/devfile/library/pkg/devfile"
-	"github.com/devfile/library/pkg/devfile/parser"
-	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	devfilepkg "github.com/maysunfaisal/parser/pkg/devfile"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
+	v2 "github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 )
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 
 		components, e := devfile.Data.GetComponents(compOptions)
 		if e != nil {
-			fmt.Printf("err: %v\n", err)
+			fmt.Printf("comp err: %v\n", e)
 		}
 
 		for _, component := range components {
@@ -49,7 +49,7 @@ func main() {
 
 		commands, e := devfile.Data.GetCommands(cmdOptions)
 		if e != nil {
-			fmt.Printf("err: %v\n", err)
+			fmt.Printf("command err: %v\n", e)
 		}
 		for _, command := range commands {
 			if command.Exec != nil {

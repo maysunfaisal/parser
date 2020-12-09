@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/devfile/library/pkg/devfile/parser/data"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data"
 	"github.com/pkg/errors"
 	"k8s.io/klog"
 )

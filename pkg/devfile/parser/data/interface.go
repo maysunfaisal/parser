@@ -3,7 +3,7 @@ package data
 import (
 	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
 	devfilepkg "github.com/devfile/api/pkg/devfile"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 )
 
 // DevfileData is an interface that defines functions for Devfile data operations

@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
-	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
-	"github.com/devfile/library/pkg/devfile/parser/data"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	devfileCtx "github.com/maysunfaisal/parser/pkg/devfile/parser/context"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 	"github.com/pkg/errors"
 	"k8s.io/apimachinery/pkg/util/strategicpatch"
 )

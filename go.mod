@@ -11,6 +11,7 @@ require (
 	github.com/kylelemons/godebug v0.0.0-20170820004349-d65d576e9348
 	github.com/mattn/go-colorable v0.1.2 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
+	github.com/maysunfaisal/api v0.0.0-20210107191305-9dbfa7e1394c
 	github.com/openshift/api v0.0.0-20200930075302-db52bc4ef99f
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/afero v1.2.2

@@ -28,8 +28,8 @@ components:
       strategy: Dockerfile
   container:
     endpoints:
-    - name: http-3000
-      targetPort: 3000
+    - name: http-3001
+      targetPort: 3001
     image: registry.access.redhat.com/ubi8/nodejs-12:1-45
     memoryLimit: 1024Mi
     mountSources: true
@@ -41,23 +41,29 @@ components:
       usage: deploy
   container:
     endpoints:
-    - name: http-3000
-      targetPort: 3000
+    - name: http-3002
+      targetPort: 3002
     image: registry.access.redhat.com/ubi8/nodejs-12:1-45
     memoryLimit: 1024Mi
     mountSources: true
     sourceMapping: /project
+    env:
+    - name: PROJECTw_SOURCE
+      value: sssss
 - name: runtime4
   attributes:
     tool: workspace-operator
   container:
     endpoints:
-    - name: http-3000
-      targetPort: 3000
+    - name: http-3003
+      targetPort: 3003
     image: registry.access.redhat.com/ubi8/nodejs-12:1-45
     memoryLimit: 1024Mi
     mountSources: true
     sourceMapping: /project
+    env:
+    - name: PROJECTS_ROOT
+      value: sssss
 commands:
 - exec:
     commandLine: npm install

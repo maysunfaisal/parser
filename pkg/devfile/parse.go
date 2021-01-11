@@ -2,6 +2,7 @@ package devfile
 
 import (
 	"github.com/devfile/library/pkg/devfile/parser"
+	"github.com/devfile/library/pkg/devfile/validation"
 )
 
 // ParseFromURLAndValidate func parses the devfile data from the url
@@ -50,6 +51,10 @@ func ParseAndValidate(path string) (d parser.DevfileObj, err error) {
 	}
 
 	// generic validation on devfile content - TODO
+	err = validation.ValidateDevfileData(d.Data)
+	if err != nil {
+		return d, err
+	}
 
 	return d, err
 }

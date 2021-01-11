@@ -3,7 +3,7 @@ package common
 import (
 	"reflect"
 
-	apiAttributes "github.com/devfile/api/pkg/attributes"
+	apiAttributes "github.com/maysunfaisal/api/pkg/attributes"
 )
 
 // DevfileOptions provides options for Devfile operations

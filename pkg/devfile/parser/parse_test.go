@@ -8,12 +8,12 @@ import (
 	"reflect"
 	"testing"
 
-	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
-	devfilepkg "github.com/devfile/api/pkg/devfile"
 	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
 	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
 	"github.com/ghodss/yaml"
 	"github.com/kylelemons/godebug/pretty"
+	v1 "github.com/maysunfaisal/api/pkg/apis/workspaces/v1alpha2"
+	devfilepkg "github.com/maysunfaisal/api/pkg/devfile"
 )
 
 const schemaV200 = "2.0.0"

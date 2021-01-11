@@ -6,13 +6,13 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/devfile/api/pkg/attributes"
 	"github.com/devfile/library/pkg/devfile/parser"
 	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
 	"github.com/devfile/library/pkg/testingutil"
+	"github.com/maysunfaisal/api/pkg/attributes"
 	buildv1 "github.com/openshift/api/build/v1"
 
-	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
+	v1 "github.com/maysunfaisal/api/pkg/apis/workspaces/v1alpha2"
 
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"

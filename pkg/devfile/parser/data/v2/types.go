@@ -1,7 +1,7 @@
 package v2
 
 import (
-	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
+	v1 "github.com/maysunfaisal/api/pkg/apis/workspaces/v1alpha2"
 )
 
 // DevfileV2 is the devfile go struct from devfile/api

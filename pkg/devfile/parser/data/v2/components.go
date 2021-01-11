@@ -1,8 +1,8 @@
 package v2
 
 import (
-	v1 "github.com/devfile/api/pkg/apis/workspaces/v1alpha2"
 	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	v1 "github.com/maysunfaisal/api/pkg/apis/workspaces/v1alpha2"
 )
 
 // GetComponents returns the slice of Component objects parsed from the Devfile

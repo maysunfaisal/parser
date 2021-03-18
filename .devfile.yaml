@@ -23,7 +23,7 @@ starterProjects:
     remotes:
       origin: https://github.com/odo-devfiles/nodejs-ex.git
 components:
-- name: runtime222
+- name: hehehehe
   attributes:
     tool: console-import
     import:
@@ -65,7 +65,7 @@ components:
 commands:
 - exec:
     commandLine: npm install
-    component: runtime222
+    component: hehehehe
     group:
       isDefault: false
       kind: build
@@ -76,7 +76,7 @@ commands:
     mandatory: false
 - exec:
     commandLine: npm start
-    component: runtime222
+    component: hehehehe
     group:
       isDefault: false
       kind: run
@@ -87,7 +87,7 @@ commands:
     mandatory: true
 - exec:
     commandLine: npm run debug
-    component: runtime222
+    component: hehehehe
     group:
       isDefault: false
       kind: debug
@@ -95,7 +95,7 @@ commands:
   id: debug2
 - exec:
     commandLine: npm test
-    component: runtime222
+    component: hehehehe
     group:
       isDefault: false
       kind: test

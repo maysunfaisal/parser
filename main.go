@@ -13,6 +13,7 @@ import (
 )
 
 func main() {
+	fmt.Printf("args %+v\n", os.Args)
 	if len(os.Args) > 1 && os.Args[1] == "updateSchema" {
 		ReplaceSchemaFile()
 	} else {

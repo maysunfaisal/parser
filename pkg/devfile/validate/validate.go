@@ -2,11 +2,12 @@ package validate
 
 import (
 	"fmt"
-	v2Validation "github.com/devfile/api/v2/pkg/validation"
-	devfileData "github.com/devfile/library/pkg/devfile/parser/data"
-	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
 	"strings"
+
+	v2Validation "github.com/maysunfaisal/api/v2/pkg/validation"
+	devfileData "github.com/maysunfaisal/parser/pkg/devfile/parser/data"
+	v2 "github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 )
 
 // ValidateDevfileData validates whether sections of devfile are compatible

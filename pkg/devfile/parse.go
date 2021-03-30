@@ -1,8 +1,9 @@
 package devfile
 
 import (
-	"github.com/devfile/library/pkg/devfile/parser"
-	"github.com/devfile/library/pkg/devfile/validate"
+	varValidation "github.com/maysunfaisal/api/v2/pkg/validation/variables"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
+	"github.com/maysunfaisal/parser/pkg/devfile/validate"
 )
 
 // ParseFromURLAndValidate func parses the devfile data from the url
@@ -60,6 +61,13 @@ func ParseAndValidate(path string) (d parser.DevfileObj, err error) {
 		return d, err
 	}
 
+	workspace := d.Data.GetDevfileWorkspace()
+	err = varValidation.ValidateAndReplaceGlobalVariable(workspace)
+	if err != nil {
+		return d, err
+	}
+	d.Data.SetDevfileWorkspace(*workspace)
+
 	// generic validation on devfile content
 	err = validate.ValidateDevfileData(d.Data)
 	if err != nil {
@@ -75,6 +83,13 @@ func ParseAndValidate(path string) (d parser.DevfileObj, err error) {
 // Creates devfile context and runtime objects.
 func ParseDevfileAndValidate(args parser.ParserArgs) (d parser.DevfileObj, err error) {
 	d, err = parser.ParseDevfile(args)
+	if err != nil {
+		return d, err
+	}
+
+	workspace := d.Data.GetDevfileWorkspace()
+
+	err = varValidation.ValidateAndReplaceGlobalVariable(workspace)
 	if err != nil {
 		return d, err
 	}

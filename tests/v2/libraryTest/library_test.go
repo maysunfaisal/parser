@@ -3,9 +3,9 @@ package api
 import (
 	"testing"
 
-	schema "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	commonUtils "github.com/devfile/api/v2/test/v200/utils/common"
-	libraryUtils "github.com/devfile/library/tests/v2/utils/library"
+	schema "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	commonUtils "github.com/maysunfaisal/api/v2/test/v200/utils/common"
+	libraryUtils "github.com/maysunfaisal/parser/tests/v2/utils/library"
 )
 
 // TestContent - structure used by a test to configure the tests to run

@@ -1,7 +1,7 @@
 package v2
 
 import (
-	devfilepkg "github.com/devfile/api/v2/pkg/devfile"
+	devfilepkg "github.com/maysunfaisal/api/v2/pkg/devfile"
 )
 
 //GetSchemaVersion gets devfile schema version

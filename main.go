@@ -6,10 +6,10 @@ import (
 	"reflect"
 	"strings"
 
-	devfilepkg "github.com/devfile/library/pkg/devfile"
-	"github.com/devfile/library/pkg/devfile/parser"
-	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	devfilepkg "github.com/maysunfaisal/parser/pkg/devfile"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
+	v2 "github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 )
 
 func main() {
@@ -66,7 +66,7 @@ func parserTest() {
 		}
 		for _, command := range commands {
 			if command.Exec != nil {
-				fmt.Printf("command %s is with kind: %s", command.Id, command.Exec.Group.Kind)
+				fmt.Printf("command %s is with kind: %s\n", command.Id, command.Exec.Group.Kind)
 				fmt.Printf("workingDir is: %s\n", command.Exec.WorkingDir)
 			}
 		}

@@ -4,6 +4,9 @@ metadata:
   version: 1.0.0
   attributes:
     alpha.build-dockerfile: /relative/path/to/Dockerfile
+variables:
+  tag: xyz
+  version: "1"
 parent:
   # uri: https://raw.githubusercontent.com/odo-devfiles/registry/master/devfiles/nodejs/devfile.yaml
   id: nodejs
@@ -32,10 +35,10 @@ components:
     endpoints:
     - name: http-8888
       targetPort: 8888
-    image: registry.access.redhat.com/ubi8/nodejs-12:1-45
+    image: "{{asdf}}"
     memoryLimit: 1024Mi
     mountSources: true
-    sourceMapping: /project
+    sourceMapping: "{{xyz}}"
     command:
       - npm install
 - name: runtime3
@@ -50,7 +53,7 @@ components:
     image: registry.access.redhat.com/ubi8/nodejs-12:1-45
     memoryLimit: 1024Mi
     mountSources: true
-    sourceMapping: /project
+    sourceMapping: "{{aaa}}"
 - name: runtime4
   attributes:
     tool: workspace-operator
@@ -69,13 +72,13 @@ commands:
     group:
       isDefault: false
       kind: build
-    workingDir: /project
+    workingDir: "s"
   id: install2
   attributes:
     tool: odo
     mandatory: false
 - exec:
-    commandLine: npm start
+    commandLine: "s"
     component: runtime2
     group:
       isDefault: false

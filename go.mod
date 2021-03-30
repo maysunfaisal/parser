@@ -1,9 +1,8 @@
-module github.com/devfile/library
+module github.com/maysunfaisal/parser
 
 go 1.13
 
 require (
-	github.com/devfile/api/v2 v2.0.0-20210304212617-bfc3f501616b
 	github.com/fatih/color v1.7.0
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32
 	github.com/gobwas/glob v0.2.3
@@ -12,6 +11,7 @@ require (
 	github.com/kylelemons/godebug v0.0.0-20170820004349-d65d576e9348
 	github.com/mattn/go-colorable v0.1.2 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
+	github.com/maysunfaisal/api/v2 v2.0.0-20210330134738-86db6424b335
 	github.com/openshift/api v0.0.0-20200930075302-db52bc4ef99f
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/afero v1.2.2

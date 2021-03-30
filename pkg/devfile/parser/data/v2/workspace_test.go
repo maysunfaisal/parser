@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
 )
 
 func TestDevfile200_SetDevfileWorkspace(t *testing.T) {
@@ -65,7 +65,7 @@ func TestDevfile200_SetDevfileWorkspace(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			tt.devfilev2.SetDevfileWorkspace(tt.workspace)
+			tt.devfilev2.SetDevfileWorkspaceContent(tt.workspace)
 			if !reflect.DeepEqual(tt.devfilev2, tt.expectedDevfilev2) {
 				t.Errorf("TestDevfile200_SetDevfileWorkspace() expected %v, got %v", tt.expectedDevfilev2, tt.devfilev2)
 			}

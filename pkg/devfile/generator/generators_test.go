@@ -4,13 +4,13 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	"github.com/devfile/api/v2/pkg/attributes"
-	"github.com/devfile/library/pkg/devfile/parser"
-	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
-	"github.com/devfile/library/pkg/testingutil"
+	"github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	"github.com/maysunfaisal/api/v2/pkg/attributes"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
+	v2 "github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
+	"github.com/maysunfaisal/parser/pkg/testingutil"
 
 	corev1 "k8s.io/api/core/v1"
 )

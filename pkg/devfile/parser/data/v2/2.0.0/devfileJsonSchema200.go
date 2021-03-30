@@ -1,6 +1,6 @@
 package version200
 
-// https://raw.githubusercontent.com/devfile/api/2.0.x/schemas/latest/devfile.json
+// https://raw.githubusercontent.com/maysunfaisal/api/2.0.x/schemas/latest/devfile.json
 const JsonSchema200 = `{
   "description": "Devfile describes the structure of a cloud-native workspace and development environment.",
   "type": "object",

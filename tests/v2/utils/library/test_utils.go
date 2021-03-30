@@ -8,15 +8,15 @@ import (
 	"testing"
 	"time"
 
-	schema "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	header "github.com/devfile/api/v2/pkg/devfile"
-	devfilepkg "github.com/devfile/library/pkg/devfile"
-	"github.com/devfile/library/pkg/devfile/parser"
-	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
-	devfileData "github.com/devfile/library/pkg/devfile/parser/data"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	schema "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	header "github.com/maysunfaisal/api/v2/pkg/devfile"
+	devfilepkg "github.com/maysunfaisal/parser/pkg/devfile"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser"
+	devfileCtx "github.com/maysunfaisal/parser/pkg/devfile/parser/context"
+	devfileData "github.com/maysunfaisal/parser/pkg/devfile/parser/data"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 
-	commonUtils "github.com/devfile/api/v2/test/v200/utils/common"
+	commonUtils "github.com/maysunfaisal/api/v2/test/v200/utils/common"
 )
 
 const (
@@ -27,7 +27,7 @@ const (
 )
 
 // DevfileValidator struct for DevfileValidator interface.
-// The DevfileValidator interface is test/v200/utils/common/test_utils.go of the devfile/api repository.
+// The DevfileValidator interface is test/v200/utils/common/test_utils.go of the maysunfaisal/api repository.
 type DevfileValidator struct{}
 
 // WriteAndValidate implements DevfileValidator interface.
@@ -48,7 +48,7 @@ func (devfileValidator DevfileValidator) WriteAndValidate(devfile *commonUtils.T
 }
 
 // DevfileFollower struct for DevfileFollower interface.
-// The DevfileFollower interface is defined in test/v200/utils/common/test_utils.go of the devfile/api repository
+// The DevfileFollower interface is defined in test/v200/utils/common/test_utils.go of the maysunfaisal/api repository
 type DevfileFollower struct {
 	LibraryData devfileData.DevfileData
 }

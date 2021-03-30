@@ -9,11 +9,11 @@ BOLD='\033[1m'
 set -e
 
 CURRENT_DIR=$(pwd)
-API_PKG="github.com/devfile/api/v2"
-SCHEMA_URL_MASTER="https://raw.githubusercontent.com/devfile/api/master/schemas/latest/devfile.json"
+API_PKG="github.com/maysunfaisal/api/v2"
+SCHEMA_URL_MASTER="https://raw.githubusercontent.com/maysunfaisal/api/master/schemas/latest/devfile.json"
 
 # 2.0.0 devfile
-SCHEMA_URL_200="https://raw.githubusercontent.com/devfile/api/2.0.x/schemas/latest/devfile.json"
+SCHEMA_URL_200="https://raw.githubusercontent.com/maysunfaisal/api/2.0.x/schemas/latest/devfile.json"
 PACKAGE_VERSION_200="version200"
 JSON_SCHEMA_200="JsonSchema200"
 FILE_PATH_200="./pkg/devfile/parser/data/v2/2.0.0/devfileJsonSchema200.go"
@@ -30,7 +30,7 @@ onError() {
 trap 'onError' ERR
 
 
-echo -e "${GREEN}Updating devfile/api in go.mod${NC}"
+echo -e "${GREEN}Updating maysunfaisal/api in go.mod${NC}"
 go get "${API_PKG}@master"
 
 echo -e "${GREEN}Get latest schema${NC}"

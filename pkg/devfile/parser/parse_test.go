@@ -12,12 +12,12 @@ import (
 	"strings"
 	"testing"
 
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	devfilepkg "github.com/devfile/api/v2/pkg/devfile"
-	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
-	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
 	"github.com/ghodss/yaml"
 	"github.com/kylelemons/godebug/pretty"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	devfilepkg "github.com/maysunfaisal/api/v2/pkg/devfile"
+	devfileCtx "github.com/maysunfaisal/parser/pkg/devfile/parser/context"
+	v2 "github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2"
 )
 
 const schemaV200 = "2.0.0"

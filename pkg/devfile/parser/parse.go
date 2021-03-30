@@ -3,21 +3,22 @@ package parser
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/devfile/library/pkg/util"
 	"net/url"
 	"path"
 	"strings"
 
-	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
-	"github.com/devfile/library/pkg/devfile/parser/data"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	"github.com/maysunfaisal/parser/pkg/util"
+
+	devfileCtx "github.com/maysunfaisal/parser/pkg/devfile/parser/context"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 	"k8s.io/klog"
 
 	"reflect"
 
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	apiOverride "github.com/devfile/api/v2/pkg/utils/overriding"
-	"github.com/devfile/api/v2/pkg/validation"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	apiOverride "github.com/maysunfaisal/api/v2/pkg/utils/overriding"
+	"github.com/maysunfaisal/api/v2/pkg/validation"
 	"github.com/pkg/errors"
 )
 
@@ -179,7 +180,7 @@ func parseParentAndPlugin(d DevfileObj) (err error) {
 				return fmt.Errorf("parent URI or parent Id undefined, currently only URI and Id are suppported")
 			}
 
-			parentWorkspaceContent := parentDevfileObj.Data.GetDevfileWorkspace()
+			parentWorkspaceContent := parentDevfileObj.Data.GetDevfileWorkspaceContent()
 			if !reflect.DeepEqual(parent.ParentOverrides, v1.ParentOverrides{}) {
 				flattenedParent, err = apiOverride.OverrideDevWorkspaceTemplateSpec(parentWorkspaceContent, parent.ParentOverrides)
 				if err != nil {
@@ -210,7 +211,7 @@ func parseParentAndPlugin(d DevfileObj) (err error) {
 			} else {
 				return fmt.Errorf("plugin URI undefined, currently only URI is suppported")
 			}
-			pluginWorkspaceContent := pluginDevfileObj.Data.GetDevfileWorkspace()
+			pluginWorkspaceContent := pluginDevfileObj.Data.GetDevfileWorkspaceContent()
 			flattenedPlugin := pluginWorkspaceContent
 			if !reflect.DeepEqual(plugin.PluginOverrides, v1.PluginOverrides{}) {
 				flattenedPlugin, err = apiOverride.OverrideDevWorkspaceTemplateSpec(pluginWorkspaceContent, plugin.PluginOverrides)
@@ -222,11 +223,11 @@ func parseParentAndPlugin(d DevfileObj) (err error) {
 		}
 	}
 
-	mergedContent, err := apiOverride.MergeDevWorkspaceTemplateSpec(d.Data.GetDevfileWorkspace(), flattenedParent, flattenedPlugins...)
+	mergedContent, err := apiOverride.MergeDevWorkspaceTemplateSpec(d.Data.GetDevfileWorkspaceContent(), flattenedParent, flattenedPlugins...)
 	if err != nil {
 		return err
 	}
-	d.Data.SetDevfileWorkspace(*mergedContent)
+	d.Data.SetDevfileWorkspaceContent(*mergedContent)
 	// remove parent from flatterned devfile
 	d.Data.SetParent(nil)
 

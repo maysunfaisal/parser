@@ -3,8 +3,8 @@ package v2
 import (
 	"reflect"
 
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	"github.com/maysunfaisal/parser/pkg/devfile/parser/data/v2/common"
 )
 
 // GetComponents returns the slice of Component objects parsed from the Devfile

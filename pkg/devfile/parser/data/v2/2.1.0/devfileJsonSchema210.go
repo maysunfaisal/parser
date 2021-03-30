@@ -1,6 +1,6 @@
 package version210
 
-// https://raw.githubusercontent.com/devfile/api/master/schemas/latest/devfile.json
+// https://raw.githubusercontent.com/maysunfaisal/api/master/schemas/latest/devfile.json
 const JsonSchema210 = `{
   "description": "Devfile describes the structure of a cloud-native workspace and development environment.",
   "type": "object",
@@ -9,6 +9,11 @@ const JsonSchema210 = `{
     "schemaVersion"
   ],
   "properties": {
+    "attributes": {
+      "description": "Map of implementation-dependant free-form YAML attributes.",
+      "type": "object",
+      "additionalProperties": true
+    },
     "commands": {
       "description": "Predefined, ready-to-use, workspace-related commands",
       "type": "array",
@@ -1246,7 +1251,7 @@ const JsonSchema210 = `{
       "type": "object",
       "properties": {
         "attributes": {
-          "description": "Map of implementation-dependant free-form YAML attributes.",
+          "description": "Map of implementation-dependant free-form YAML attributes. Deprecated, use the global attributes instead.",
           "type": "object",
           "additionalProperties": true
         },
@@ -1318,6 +1323,11 @@ const JsonSchema210 = `{
         }
       ],
       "properties": {
+        "attributes": {
+          "description": "Overrides of attributes encapsulated in a parent devfile. Overriding is done according to K8S strategic merge patch standard rules.",
+          "type": "object",
+          "additionalProperties": true
+        },
         "commands": {
           "description": "Overrides of commands encapsulated in a parent devfile or a plugin. Overriding is done according to K8S strategic merge patch standard rules.",
           "type": "array",
@@ -2746,6 +2756,13 @@ const JsonSchema210 = `{
         "uri": {
           "description": "Uri of a Devfile yaml file",
           "type": "string"
+        },
+        "variables": {
+          "description": "Overrides of variables encapsulated in a parent devfile. Overriding is done according to K8S strategic merge patch standard rules.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       },
       "additionalProperties": false
@@ -3004,6 +3021,13 @@ const JsonSchema210 = `{
           }
         },
         "additionalProperties": false
+      }
+    },
+    "variables": {
+      "description": "Map of string variables. Variable values can be referenced throughout the devfile in string type fields in the form {{variable-key}} except for schemaVersion, metadata, parent source. Exception to the string field also include element's key identifiers (command id, component name, endpoint name, project name, etc.) and their references(events, command's component, container's volume mount name, etc.) and string enums(command group kind, endpoint exposure, etc.)",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
       }
     }
   },

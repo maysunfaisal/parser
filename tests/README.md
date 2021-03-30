@@ -37,7 +37,7 @@ The tests which generate devfiles with random content at run time currently cove
 * From this repository
     - `test/v2/libraryTest/library-test.go`: The go unit test program
     - `test/v2/utils/library/*-utils.go` : utilites, used by the test, which contain functions uniqiue to the library tests. Mostly contain the code to modify and check devfile content.
-* From the [api respository](https://github.com/devfile/api/tree/master/test/v200/utils/common)
+* From the [api respository](https://github.com/maysunfaisal/api/tree/master/test/v200/utils/common)
     - `test/v200/utils/common/*-utils.go` : utilites, used by the test, which are also used by the api tests. Mostly contain the code to generate valid devfile content.
 
 ## Running the tests

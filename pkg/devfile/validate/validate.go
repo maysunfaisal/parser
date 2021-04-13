@@ -2,10 +2,10 @@ package validate
 
 import (
 	"fmt"
-	v2Validation "github.com/devfile/api/v2/pkg/validation"
 	devfileData "github.com/devfile/library/pkg/devfile/parser/data"
 	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
 	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	v2Validation "github.com/maysunfaisal/api/v2/pkg/validation"
 	"strings"
 )
 

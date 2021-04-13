@@ -9,7 +9,7 @@ BOLD='\033[1m'
 set -e
 
 CURRENT_DIR=$(pwd)
-API_PKG="github.com/devfile/api/v2"
+API_PKG="github.com/maysunfaisal/api/v2"
 SCHEMA_URL_MASTER="https://raw.githubusercontent.com/devfile/api/main/schemas/latest/devfile.json"
 
 # 2.0.0 devfile

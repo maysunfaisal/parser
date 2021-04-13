@@ -3,8 +3,8 @@ package common
 import (
 	"reflect"
 
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	apiAttributes "github.com/devfile/api/v2/pkg/attributes"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	apiAttributes "github.com/maysunfaisal/api/v2/pkg/attributes"
 )
 
 // DevfileOptions provides options for Devfile operations

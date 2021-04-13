@@ -1,9 +1,10 @@
 package data
 
 import (
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	devfilepkg "github.com/devfile/api/v2/pkg/devfile"
 	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	attributes "github.com/maysunfaisal/api/v2/pkg/attributes"
+	devfilepkg "github.com/maysunfaisal/api/v2/pkg/devfile"
 )
 
 // DevfileData is an interface that defines functions for Devfile data operations
@@ -51,9 +52,17 @@ type DevfileData interface {
 	DeleteVolumeMount(name string) error
 	GetVolumeMountPaths(mountName, containerName string) ([]string, error)
 
+	// top level attributes
+	GetTopLevelAttributes() (attributes.Attributes, error)
+
+	// top level variables
+	GetTopLevelVariables() (map[string]string, error)
+	UpdateTopLevelVariables(map[string]string) error
+
 	// workspace related methods
 	GetDevfileWorkspace() *v1.DevWorkspaceTemplateSpecContent
 	SetDevfileWorkspace(content v1.DevWorkspaceTemplateSpecContent)
+	GetDevfileWorkspaceSpec() *v1.DevWorkspaceTemplateSpec
 
 	// utils
 	GetDevfileContainerComponents(common.DevfileOptions) ([]v1.Component, error)

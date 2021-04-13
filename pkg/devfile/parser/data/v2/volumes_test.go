@@ -3,8 +3,8 @@ package v2
 import (
 	"testing"
 
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
 	"github.com/devfile/library/pkg/testingutil"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
 	"github.com/stretchr/testify/assert"
 )
 

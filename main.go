@@ -32,13 +32,13 @@ func parserTest() {
 				Path: os.Args[1],
 			}
 		}
-		fmt.Println("parsing devfile from " + os.Args[1])
+		fmt.Printf("parsing devfile from %s\n\n", os.Args[1])
 
 	} else {
 		args = parser.ParserArgs{
 			Path: "devfile.yaml",
 		}
-		fmt.Println("parsing devfile from ./devfile.yaml")
+		fmt.Printf("parsing devfile from ./devfile.yaml\n\n")
 	}
 	devfile, err := devfilepkg.ParseDevfileAndValidate(args)
 	if err != nil {
@@ -47,77 +47,33 @@ func parserTest() {
 		devdata := devfile.Data
 		if (reflect.TypeOf(devdata) == reflect.TypeOf(&v2.DevfileV2{})) {
 			d := devdata.(*v2.DevfileV2)
-			fmt.Printf("schema version: %s\n", d.SchemaVersion)
+			fmt.Printf("devfile schema version: %s\n\n", d.SchemaVersion)
 		}
+
+		variables, varErr := devfile.Data.GetTopLevelVariables()
+		if varErr != nil {
+			fmt.Printf("err: %v\n", varErr)
+		} else {
+			fmt.Printf("My top level variable keys are: ")
+			for k, _ := range variables {
+				fmt.Printf("%s ", k)
+			}
+		}
+
+		fmt.Printf("\n\n")
 
 		components, e := devfile.Data.GetComponents(common.DevfileOptions{})
 		if e != nil {
 			fmt.Printf("err: %v\n", err)
 		}
-		fmt.Printf("All component: \n")
-		for _, component := range components {
-			fmt.Printf("%s\n", component.Name)
-		}
-
-		fmt.Printf("All Exec commands: \n")
-		commands, e := devfile.Data.GetCommands(common.DevfileOptions{})
-		if e != nil {
-			fmt.Printf("err: %v\n", err)
-		}
-		for _, command := range commands {
-			if command.Exec != nil {
-				fmt.Printf("command %s is with kind: %s", command.Id, command.Exec.Group.Kind)
-				fmt.Printf("workingDir is: %s\n", command.Exec.WorkingDir)
-			}
-		}
-
-		fmt.Println("=========================================================")
-
-		compOptions := common.DevfileOptions{
-			Filter: map[string]interface{}{
-				"tool": "console-import",
-				"import": map[string]interface{}{
-					"strategy": "Dockerfile",
-				},
-			},
-		}
-
-		components, e = devfile.Data.GetComponents(compOptions)
-		if e != nil {
-			fmt.Printf("err: %v\n", err)
-		}
-		fmt.Printf("Container components applied filter: \n")
+		fmt.Printf("All devfile container components \n")
 		for _, component := range components {
 			if component.Container != nil {
-				fmt.Printf("%s\n", component.Name)
+				fmt.Printf("component name: %s\n", component.Name)
+				fmt.Printf("component image: %s\n", component.Container.Image)
+				fmt.Printf("component mem limit: %s\n", component.Container.MemoryLimit)
 			}
 		}
-
-		cmdOptions := common.DevfileOptions{
-			Filter: map[string]interface{}{
-				"tool": "odo",
-			},
-		}
-
-		fmt.Printf("Exec commands applied filter: \n")
-		commands, e = devfile.Data.GetCommands(cmdOptions)
-		if e != nil {
-			fmt.Printf("err: %v\n", err)
-		}
-		for _, command := range commands {
-			if command.Exec != nil {
-				fmt.Printf("command %s is with kind: %s", command.Id, command.Exec.Group.Kind)
-				fmt.Printf("workingDir is: %s\n", command.Exec.WorkingDir)
-			}
-		}
-
-		var err error
-		metadataAttr := devfile.Data.GetMetadata().Attributes
-		dockerfilePath := metadataAttr.GetString("alpha.build-dockerfile", &err)
-		if err != nil {
-			fmt.Printf("err: %v\n", err)
-		}
-		fmt.Printf("dockerfilePath: %s\n", dockerfilePath)
 	}
 
 }

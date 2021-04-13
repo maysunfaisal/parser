@@ -1,7 +1,7 @@
 package testingutil
 
 import (
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
 )
 
 // GetFakeContainerComponent returns a fake container component for testing.

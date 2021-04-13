@@ -8,15 +8,15 @@ import (
 	"testing"
 	"time"
 
-	schema "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	header "github.com/devfile/api/v2/pkg/devfile"
 	devfilepkg "github.com/devfile/library/pkg/devfile"
 	"github.com/devfile/library/pkg/devfile/parser"
 	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
 	devfileData "github.com/devfile/library/pkg/devfile/parser/data"
 	"github.com/devfile/library/pkg/devfile/parser/data/v2/common"
+	schema "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	header "github.com/maysunfaisal/api/v2/pkg/devfile"
 
-	commonUtils "github.com/devfile/api/v2/test/v200/utils/common"
+	commonUtils "github.com/maysunfaisal/api/v2/test/v200/utils/common"
 )
 
 const (

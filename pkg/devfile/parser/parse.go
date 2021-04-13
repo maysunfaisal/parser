@@ -15,9 +15,9 @@ import (
 
 	"reflect"
 
-	v1 "github.com/devfile/api/v2/pkg/apis/workspaces/v1alpha2"
-	apiOverride "github.com/devfile/api/v2/pkg/utils/overriding"
-	"github.com/devfile/api/v2/pkg/validation"
+	v1 "github.com/maysunfaisal/api/v2/pkg/apis/workspaces/v1alpha2"
+	apiOverride "github.com/maysunfaisal/api/v2/pkg/utils/overriding"
+	"github.com/maysunfaisal/api/v2/pkg/validation"
 	"github.com/pkg/errors"
 )
 

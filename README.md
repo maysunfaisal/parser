@@ -3,7 +3,7 @@
 ## About
 
 The Devfile Parser library is a Golang module that:
-1. parses the devfile.yaml as specified by the [api](https://devfile.github.io/devfile/api-reference.html) & [schema](https://github.com/devfile/api/tree/master/schemas/latest).
+1. parses the devfile.yaml as specified by the [api](https://devfile.github.io/devfile/api-reference.html) & [schema](https://github.com/maysunfaisal/api/tree/master/schemas/latest).
 2. writes to the devfile.yaml with the updated data.
 3. generates Kubernetes objects for the various devfile resources.
 4. defines util functions for the devfile.
@@ -64,7 +64,7 @@ The function documentation can be accessed via [pkg.go.dev](https://pkg.go.dev/g
 
 ## Updating Library Schema
 
-Run `updateApi.sh` can update to use latest `github.com/devfile/api` and update the schema saved under `pkg/devfile/parser/data`
+Run `updateApi.sh` can update to use latest `github.com/maysunfaisal/api` and update the schema saved under `pkg/devfile/parser/data`
 
 The script also accepts version number as an argument to update devfile schema for a specific devfile version.
 For example, run the following command will update devfile schema for 2.0.0
@@ -84,7 +84,7 @@ In the future, [Workspace Operator](https://github.com/devfile/devworkspace-oper
 
 ## Issues
 
-Issues are tracked in the [devfile/api](https://github.com/devfile/api) repo with the label [area/library](https://github.com/devfile/api/issues?q=is%3Aopen+is%3Aissue+label%3Aarea%2Flibrary) 
+Issues are tracked in the [devfile/api](https://github.com/maysunfaisal/api) repo with the label [area/library](https://github.com/maysunfaisal/api/issues?q=is%3Aopen+is%3Aissue+label%3Aarea%2Flibrary) 
 
 ## Releases
 

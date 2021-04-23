@@ -4,13 +4,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+
 	"github.com/devfile/library/pkg/util"
-	"k8s.io/apimachinery/pkg/types"
-	"k8s.io/client-go/tools/clientcmd"
+	"gopkg.in/yaml.v2"
+
+	"k8s.io/client-go/kubernetes"
+	// "k8s.io/client-go/tools/clientcmd"
 	"net/url"
 	"path"
-	"sigs.k8s.io/controller-runtime/pkg/client"
 	"strings"
+
+	// "sigs.k8s.io/controller-runtime/pkg/client"
 
 	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
 	"github.com/devfile/library/pkg/devfile/parser/data"
@@ -79,7 +83,8 @@ type ParserArgs struct {
 	// Context is the context used for making Kubernetes requests
 	Context context.Context
 	// K8sClient is the Kubernetes client instance used for interacting with a cluster
-	K8sClient client.Client
+	// K8sClient client.Client
+	kubeClient *kubernetes.Clientset
 }
 
 // ParseDevfile func populates the devfile data, parses and validates the devfile integrity.
@@ -102,7 +107,8 @@ func ParseDevfile(args ParserArgs) (d DevfileObj, err error) {
 		defaultNamespace: args.DefaultNamespace,
 		registryURLs:     args.RegistryURLs,
 		context:          args.Context,
-		k8sClient:        args.K8sClient,
+		// k8sClient:        args.K8sClient,
+		kubeClient: args.kubeClient,
 	}
 
 	flattenedDevfile := true
@@ -123,7 +129,8 @@ type resolverTools struct {
 	// Context is the context used for making Kubernetes or HTTP requests
 	context context.Context
 	// K8sClient is the Kubernetes client instance used for interacting with a cluster
-	k8sClient client.Client
+	// k8sClient client.Client
+	kubeClient *kubernetes.Clientset
 }
 
 func populateAndParseDevfile(d DevfileObj, resolveCtx *resolutionContextTree, tool resolverTools, flattenedDevfile bool) (DevfileObj, error) {
@@ -370,9 +377,9 @@ func getDevfileFromRegistry(id, registryURL string) ([]byte, error) {
 
 func parseFromKubeCRD(importReference v1.ImportReference, resolveCtx *resolutionContextTree, tool resolverTools) (d DevfileObj, err error) {
 
-	if tool.k8sClient == nil || tool.context == nil {
-		return DevfileObj{}, fmt.Errorf("Kubernetes client and context are required to parse from Kubernetes CRD")
-	}
+	// if tool.k8sClient == nil || tool.context == nil {
+	// 	return DevfileObj{}, fmt.Errorf("Kubernetes client and context are required to parse from Kubernetes CRD")
+	// }
 	namespace := importReference.Kubernetes.Namespace
 
 	if namespace == "" {
@@ -381,22 +388,38 @@ func parseFromKubeCRD(importReference v1.ImportReference, resolveCtx *resolution
 			namespace = tool.defaultNamespace
 		} else {
 			// use current namespace if namespace is not set in devfile and not provided by consumer
-			loadingRules := clientcmd.NewDefaultClientConfigLoadingRules()
-			configOverrides := &clientcmd.ConfigOverrides{}
-			config := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(loadingRules, configOverrides)
-			namespace, _, err = config.Namespace()
-			if err != nil {
-				return DevfileObj{}, fmt.Errorf("kubernetes namespace is not provided, and cannot get current running cluster's namespace: %v", err)
-			}
+			// // loadingRules := clientcmd.NewDefaultClientConfigLoadingRules()
+			// // configOverrides := &clientcmd.ConfigOverrides{}
+			// // config := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(loadingRules, configOverrides)
+			// // namespace, _, err = config.Namespace()
+			// if err != nil {
+			// 	return DevfileObj{}, fmt.Errorf("kubernetes namespace is not provided, and cannot get current running cluster's namespace: %v", err)
+			// }
+			return DevfileObj{}, fmt.Errorf("kubernetes namespace is not provided")
 		}
 	}
 
 	var dwTemplate v1.DevWorkspaceTemplate
-	namespacedName := types.NamespacedName{
-		Name:      importReference.Kubernetes.Name,
-		Namespace: namespace,
+	// namespacedName := types.NamespacedName{
+	// 	Name:      importReference.Kubernetes.Name,
+	// 	Namespace: namespace,
+	// }
+	// err = tool.k8sClient.Get(tool.context, namespacedName, &dwTemplate)
+	// if err != nil {
+	// 	return DevfileObj{}, err
+	// }
+
+	data, err := tool.kubeClient.RESTClient().
+		Get().
+		Namespace(namespace).
+		Resource("dw").
+		Name(importReference.Kubernetes.Name).
+		DoRaw(context.TODO())
+	if err != nil {
+		return DevfileObj{}, err
 	}
-	err = tool.k8sClient.Get(tool.context, namespacedName, &dwTemplate)
+
+	err = yaml.Unmarshal(data, &dwTemplate)
 	if err != nil {
 		return DevfileObj{}, err
 	}

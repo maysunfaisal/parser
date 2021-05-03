@@ -18,7 +18,6 @@ import (
 	devfilepkg "github.com/devfile/api/v2/pkg/devfile"
 	devfileCtx "github.com/devfile/library/pkg/devfile/parser/context"
 	v2 "github.com/devfile/library/pkg/devfile/parser/data/v2"
-	"github.com/devfile/library/pkg/testingutil"
 	"github.com/ghodss/yaml"
 	"github.com/kylelemons/godebug/pretty"
 	kubev1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -2337,47 +2336,47 @@ func Test_parseParentAndPlugin_RecursivelyReference(t *testing.T) {
 	testServer2.Start()
 	defer testServer2.Close()
 
-	parentSpec := v1.DevWorkspaceTemplateSpec{
-		Parent: &v1.Parent{
-			ImportReference: v1.ImportReference{
-				ImportReferenceUnion: v1.ImportReferenceUnion{
-					Id: "nodejs",
-				},
-				RegistryUrl: httpPrefix + uri2,
-			},
-		},
-		DevWorkspaceTemplateSpecContent: v1.DevWorkspaceTemplateSpecContent{
-			Components: []v1.Component{
-				{
-					Name: "crdcomponent",
-					ComponentUnion: v1.ComponentUnion{
-						Volume: &v1.VolumeComponent{
-							Volume: v1.Volume{
-								Size: "500Mi",
-							},
-						},
-					},
-				},
-			},
-		},
-	}
-	devWorkspaceResources := map[string]v1.DevWorkspaceTemplate{
-		name: {
-			TypeMeta: kubev1.TypeMeta{
-				Kind:       "DevWorkspaceTemplate",
-				APIVersion: "testgroup/v1alpha2",
-			},
-			Spec: parentSpec,
-		},
-	}
+	// parentSpec := v1.DevWorkspaceTemplateSpec{
+	// 	Parent: &v1.Parent{
+	// 		ImportReference: v1.ImportReference{
+	// 			ImportReferenceUnion: v1.ImportReferenceUnion{
+	// 				Id: "nodejs",
+	// 			},
+	// 			RegistryUrl: httpPrefix + uri2,
+	// 		},
+	// 	},
+	// 	DevWorkspaceTemplateSpecContent: v1.DevWorkspaceTemplateSpecContent{
+	// 		Components: []v1.Component{
+	// 			{
+	// 				Name: "crdcomponent",
+	// 				ComponentUnion: v1.ComponentUnion{
+	// 					Volume: &v1.VolumeComponent{
+	// 						Volume: v1.Volume{
+	// 							Size: "500Mi",
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// }
+	// devWorkspaceResources := map[string]v1.DevWorkspaceTemplate{
+	// 	name: {
+	// 		TypeMeta: kubev1.TypeMeta{
+	// 			Kind:       "DevWorkspaceTemplate",
+	// 			APIVersion: "testgroup/v1alpha2",
+	// 		},
+	// 		Spec: parentSpec,
+	// 	},
+	// }
 
 	t.Run("it should error out if import reference has a cycle", func(t *testing.T) {
-		testK8sClient := &testingutil.FakeK8sClient{
-			DevWorkspaceResources: devWorkspaceResources,
-		}
+		// testK8sClient := &testingutil.FakeK8sClient{
+		// 	DevWorkspaceResources: devWorkspaceResources,
+		// }
 		tool := resolverTools{
-			k8sClient: testK8sClient,
-			context:   context.Background(),
+			// k8sClient: testK8sClient,
+			context: context.Background(),
 		}
 
 		err := parseParentAndPlugin(devFileObj, &resolutionContextTree{}, tool)
@@ -3040,13 +3039,13 @@ func Test_parseParentFromKubeCRD(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			testK8sClient := &testingutil.FakeK8sClient{
-				DevWorkspaceResources: tt.devWorkspaceResources,
-				Errors:                tt.errors,
-			}
+			// testK8sClient := &testingutil.FakeK8sClient{
+			// 	DevWorkspaceResources: tt.devWorkspaceResources,
+			// 	Errors:                tt.errors,
+			// }
 			tool := resolverTools{
-				k8sClient: testK8sClient,
-				context:   context.Background(),
+				// k8sClient: testK8sClient,
+				context: context.Background(),
 			}
 			err := parseParentAndPlugin(tt.mainDevfile, &resolutionContextTree{}, tool)
 
@@ -3539,13 +3538,13 @@ func Test_parseFromKubeCRD(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			testK8sClient := &testingutil.FakeK8sClient{
-				DevWorkspaceResources: tt.devWorkspaceResources,
-				Errors:                tt.errors,
-			}
+			// testK8sClient := &testingutil.FakeK8sClient{
+			// 	DevWorkspaceResources: tt.devWorkspaceResources,
+			// 	Errors:                tt.errors,
+			// }
 			tool := resolverTools{
-				k8sClient: testK8sClient,
-				context:   context.Background(),
+				// k8sClient: testK8sClient,
+				context: context.Background(),
 			}
 			got, err := parseFromKubeCRD(tt.importReference, &resolutionContextTree{}, tool)
 			if tt.wantErr == (err == nil) {
